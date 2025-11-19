@@ -1,0 +1,8 @@
+{
+  "name": "React WebOS",
+  "description": "A fully functional Windows 11-inspired Web OS featuring a window manager, file system, AI-powered Python terminal, and creative tools.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone"
+  ]
+}
