@@ -5,12 +5,17 @@ import { DesktopIcon, Taskbar, StartMenu } from './components/System';
 import { TerminalApp } from './components/Terminal';
 import { NotepadApp, BrowserApp, PaintApp, CalculatorApp, VSCodeApp, VideoEditorApp } from './components/Apps';
 
+const GitHubApp: React.FC = () => (
+  <BrowserApp initialUrl="https://github.com/yahao333/react-webos" />
+);
+
 // --- REGISTRY ---
 const APPS: AppConfig[] = [
   { id: AppID.TERMINAL, name: 'Terminal', icon: 'fas fa-terminal', color: 'bg-black', defaultSize: { width: 600, height: 400 }, component: TerminalApp },
   { id: AppID.NOTEPAD, name: 'Notepad', icon: 'fas fa-file-alt', color: 'bg-blue-500', defaultSize: { width: 500, height: 400 }, component: NotepadApp },
   { id: AppID.VSCODE, name: 'Code', icon: 'fas fa-code', color: 'bg-blue-600', defaultSize: { width: 800, height: 600 }, component: VSCodeApp },
   { id: AppID.BROWSER, name: 'Edge', icon: 'fab fa-edge', color: 'bg-blue-400', defaultSize: { width: 900, height: 600 }, component: BrowserApp },
+  { id: AppID.GITHUB, name: 'GitHub', icon: 'fab fa-github', color: 'bg-gray-800', defaultSize: { width: 900, height: 600 }, component: GitHubApp },
   { id: AppID.PAINT, name: 'Paint', icon: 'fas fa-paint-brush', color: 'bg-yellow-500', defaultSize: { width: 700, height: 500 }, component: PaintApp },
   { id: AppID.CALCULATOR, name: 'Calc', icon: 'fas fa-calculator', color: 'bg-green-500', defaultSize: { width: 300, height: 450 }, component: CalculatorApp },
   { id: AppID.VIDEO_EDITOR, name: 'Video', icon: 'fas fa-film', color: 'bg-purple-600', defaultSize: { width: 800, height: 500 }, component: VideoEditorApp },
@@ -25,6 +30,11 @@ const App: React.FC = () => {
   const openWindow = (appId: AppID) => {
     const app = APPS.find(a => a.id === appId);
     if (!app) return;
+
+    if (appId === AppID.GITHUB) {
+      window.open('https://github.com/yahao333/react-webos', '_blank');
+      return;
+    }
 
     // Check if app already open (optional, for simplicity we allow multiple instances except maybe browser/settings)
     // For this demo, let's allow multiple except for unique ones if needed.

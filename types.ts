@@ -9,7 +9,8 @@ export enum AppID {
   VSCODE = 'vscode',
   VIDEO_EDITOR = 'video_editor',
   SETTINGS = 'settings',
-  CAMERA = 'camera'
+  CAMERA = 'camera',
+  GITHUB = 'github'
 }
 
 export interface WindowState {
@@ -33,6 +34,7 @@ export interface AppConfig {
   color: string;
   defaultSize: { width: number; height: number };
   component: React.FC<any>;
+  externalUrl?: string;
 }
 
 export interface FileSystemNode {

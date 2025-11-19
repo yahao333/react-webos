@@ -26,9 +26,9 @@ export const NotepadApp: React.FC = () => {
 };
 
 // --- BROWSER ---
-export const BrowserApp: React.FC = () => {
-  const [url, setUrl] = useState("https://www.google.com/webhp?igu=1");
-  const [displayUrl, setDisplayUrl] = useState(url);
+export const BrowserApp: React.FC<{ initialUrl?: string }> = ({ initialUrl = "https://www.google.com/webhp?igu=1" }) => {
+  const [url, setUrl] = useState(initialUrl);
+  const [displayUrl, setDisplayUrl] = useState(initialUrl);
   const iframeRef = useRef<HTMLIFrameElement>(null);
 
   const handleNavigate = (e: React.FormEvent) => {
